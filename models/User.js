@@ -1,55 +1,63 @@
-// import important parts of sequelize library
 const { Model, DataTypes } = require('sequelize');
-// import our database connection from config.js
 const sequelize = require('../config/connection');
 
-// Initialize Product model (table) by extending off Sequelize's Model class
-class Product extends Model {}
+const bcrypt = require('bcrypt');
 
-// set up fields and rules for Product model
-Product.init(
+class User extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
+
+User.init(
   {
-    // columns
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true
     },
-    product_name: {
-      type: DataTypes.STRING, 
-      allowNull: false,
-    },
-    price: {
-      type: DataTypes.DECIMAL,
+    username: {
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isDecimal: true,
+        notEmpty: true,
       }
     },
-    stock: {
-      type: DataTypes.INTEGER,
+    email: {
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 10,
+      unique: true,
       validate: {
-        isNumeric: true
-      }  
+        isEmail: true
+      }
     },
-    category_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'category',
-        key: 'id',
-      },
-    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4]
+      }
+    }
   },
   {
+    hooks: {
+        async beforeCreate(newUserData) {
+            newUserData.password = await bcrypt.hash(newUserData.password, 10);
+            return newUserData;
+          },
+
+        async beforeUpdate(updatedUserData) {
+            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+            return updatedUserData;
+          }
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'product',
+    modelName: 'user'
   }
 );
 
-module.exports = Product;
+module.exports = User;

@@ -1,89 +1,51 @@
 const router = require('express').Router();
-const { Tag, Product, ProductTag } = require('../../models');
+const { Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-// The `/api/tags` endpoint
-
-// Find all tags
-router.get('/', async (req, res) => {
-  try {
-    const tagData = await Tag.findAll({
-      include: [{ model: Product }],
-    });
-    res.status(200).json(tagData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Find a single tag by its `id`
-router.get('/:id', async (req, res) => {
-  try {
-    const tagData = await Tag.findByPk(req.params.id, {
-      include: [{ model: Product }],
-    });
-
-    if (!tagData) {
-      res.status(404).json({ message: 'No tag found with that ID!' });
-      return;
-    }
-
-    res.status(200).json(tagData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-// Create a new tag
-router.post('/', async (req, res) => {
-  try {
-    const tagData = await Tag.create(req.body);
-    res.status(200).json(tagData);
-  } catch (err) {
-    res.status(400).json(err)
-  }
-});
-
-// Update a tag's name by its `id` value
-router.put('/:id', async (req, res) => {
-  try {
-    const tagData = await Tag.update(
-    {
-      tag_name: req.body.tag_name,
-    },
-    {
-      where: {
-        id: req.params.id,
-    },
+// Get comments
+router.get('/', (req, res) => {
+    Comment.findAll()
+      .then(dbCommentData => res.json(dbCommentData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
   });
-  
-  if (!tagData) {
-    res.status(404).json({ message: 'No tag found with that ID!' });
-    return;
-  }
-  res.status(200).json(tagData);
-  }catch (err) {
-    res.status(500).json(err);
+
+// Post a new comment
+router.post('/', withAuth, (req, res) => {
+  if (req.session) {
+    Comment.create({
+      comment_text: req.body.comment_text,
+      post_id: req.body.post_id,
+      user_id: req.session.user_id
+    })
+      .then(dbCommentData => res.json(dbCommentData))
+      .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
+      });
   }
 });
 
-// Delete on tag by its `id` value
-router.delete('/:id', async (req, res) => {
-  try {
-    const tagData = await Tag.destroy({
-      where: {
-        id: req.params.id
-      }
-  });
-  
-  if (!tagData) {
-    res.status(404).json({ message: 'No tag found with that ID!' });
-    return;
-  }
-  
-  res.status(200).json(tagData);
-  } catch (err) {
-  res.status(500).json(err);
-  }
-});
+// Delete a comment
+router.delete('/:id', withAuth, (req, res) => {
+    Comment.destroy({
+        where: {
+          id: req.params.id
+        }
+      })
+        .then(dbCommentData => {
+          if (!dbCommentData) {
+            res.status(404).json({ message: 'No comment found with this id' });
+            return;
+          }
+          res.json(dbCommentData);
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    });
 
 module.exports = router;
