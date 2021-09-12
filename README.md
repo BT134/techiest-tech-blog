@@ -24,7 +24,7 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
 
 ## Usage
 
-> App can be viewed [HERE]()
+> App can be viewed [HERE](https://polar-plains-43062.herokuapp.com/)
 
 ## Visual Demo
 
