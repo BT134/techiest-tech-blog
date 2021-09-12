@@ -1,9 +1,9 @@
-    <article class="post">
-      <div class="title">
-        <span><a class="is-size-4 has-text-grey-darker" href="/post/{{id}}">{{title}}</a></span><span class="is-size-6 has-text-grey-light" style="float:right">Posted by {{user.username}} on {{format_date created_at}}</span><br>
-        <span class="is-size-6 has-text-grey-light" style="float:right">{{comments.length}} {{format_plural "comment" comments.length}}</span>
-      </div>
-      <div class = "content">
-          <p>{{post_text}}</p>
-      </div>
-    </article>
+<article class="post">
+  <div class="title">
+    <span><a class="is-size-4 has-text-grey-darker" href="/post/{{id}}">{{title}}</a></span><span class="is-size-6 has-text-grey-light" style="float:right">Posted by {{user.username}} on {{format_date created_at}}</span><br>
+    <span class="is-size-6 has-text-grey-light" style="float:right">{{comments.length}} {{format_plural "comment" comments.length}}</span>
+  </div>
+  <div class = "content">
+    <p>{{post_text}}</p>
+  </div>
+</article>

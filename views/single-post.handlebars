@@ -1,18 +1,25 @@
-{{> post-info post}}
-
-{{#if loggedIn}}
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
-
-  <div>
-    <button type="submit">add comment</button>
-  </div>
-</form>
-{{/if}}
+<div class="columns">
+  <div class="column is-three-fifths is-offset-one-fifth mt-4">
+    <div class="box">
+      <div class="mb-6">
+        {{> post-info post}}
+      </div>
+      {{#if loggedIn}}
+      <form class="comment-form">
+        <div class="field">
+          <textarea class="textarea mt-6" rows="4" name="comment-body"></textarea>
+        </div>
+        <div>
+          <button class="button is-primary mt-4 mb-4" type="submit">Add Comment</button>
+        </div>
+      </form>
+      {{/if}}
 
 {{> comments post.comments}}
+
+    </div>
+  </div>
+</div>
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>

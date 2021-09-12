@@ -1,27 +1,42 @@
-<article>
-  <a href="/dashboard"> &larr; Back to dashboard</a>
-  <h2>
-    Update My Information
-  </h2>
-  <form class="edit-user-form">
-    <div>
-      <label for="user-name">User Name</label>
-      <input name="user-name" type="text" value="{{user.username}}" />
-    </div>
-    <div>
-      <label for="email">User Email</label>
-      <input name="email" value="{{user.email}}" />
-    </div>
-     <div>
-      <label for="password">Password</label>         
-      <input type="password" name="password" />
-    </div>
-    <div>
-      <input type="hidden" id="user-id" name="user-id" value={{user.id}} />
-    </div>   
-    <button type="submit">Update</button>
-  </form>
-</article>
+<div class="columns">
+  <div class="column is-4 is-offset-4">
+    <div class="box">
+    <a class="is-family-primary" href="/dashboard"> &larr; Back to dashboard</a>
+      <div class="is-size-5 mt-4 mb-4">
+        Update My Information
+      </div>
 
+      <form class="edit-user-form">
+        <div class="field">
+          <label class="label" for="user-name">User Name</label>
+           <div class="control">
+           <input class="input" name="user-name" type="text" value="{{user.username}}" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="email">User Email</label>
+          <div class="control">
+            <input class="input" name="email" value="{{user.email}}" />
+          </div>
+        </div>
+
+        <div class="field">
+         <label class="label" for="password">Password</label>    
+          <div class="control">    
+            <input class="input" type="password" name="password" />
+          </div>
+        </div> 
+    
+        <div>
+          <input type="hidden" id="user-id" name="user-id" value={{user.id}} />
+        </div>   
+    
+        <button class="button is-primary mt-2 btn" type="submit">Update</button>
+  
+      </form>
+    </div>
+  </div>
+</div>
 <!--Scripts-->
 <script src="/javascript/edit-user.js"></script>
