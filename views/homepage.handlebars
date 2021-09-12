@@ -1,0 +1,11 @@
+<div class="column is-three-fifths is-offset-one-fifth">
+    <ul class="post-list">
+      {{#each posts as |post|}}
+      <div class="box">
+      <li>
+        {{> post-info post }}
+      </li>
+      </div>
+      {{/each}}
+    </ul>
+</div>
