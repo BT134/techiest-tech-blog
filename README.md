@@ -7,7 +7,7 @@
  ## Table of Contents 
   - [Description](#description)
   - [User Story](#user-story)
-  - [Installation/Usage](#installation/usage)
+  - [Usage](#usage)
   - [Visual Demo](#visual-demo)
   - [Tests](#tests)
   - [Built With](#built-with)
@@ -22,7 +22,7 @@ I WANT a CMS-style blog site
 SO THAT I can publish articles, blog posts, and my thoughts and opinions
 ```
 
-## Installation/Usage
+## Usage
 
 > App can be viewed [HERE]()
 
