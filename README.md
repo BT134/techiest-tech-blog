@@ -7,7 +7,7 @@
  ## Table of Contents 
   - [Description](#description)
   - [User Story](#user-story)
-  - [Installation](#installation)
+  - [Installation/Usage](#installation/usage)
   - [Visual Demo](#visual-demo)
   - [Tests](#tests)
   - [Built With](#built-with)
@@ -29,9 +29,11 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
 ## Visual Demo
 
 >Signup page
+
 ><img src="assets\images\signup-screen.JPG" alt= "Screenshot of signup screen">
 
 >Dashboard view
+
 ><img src="assets\images\dashboard-screen.JPG" alt="Screenshot of dashboard screen">
 
 ## Tests
