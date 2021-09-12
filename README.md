@@ -2,7 +2,7 @@
 ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 ## Description
 
-> A CMS-style blog where developers can publish their blog posts and comment on other developers post.
+> A CMS-style blog where developers can publish their blog posts and comment on other developers post. Built using Model View Controller (MVC) paradigm. Built using MySQL2, Express, Sequelize, Bulma, Handlebars and dotenv.
 
  ## Table of Contents 
   - [Description](#description)
@@ -24,15 +24,19 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
 
 ## Installation/Usage
 
+> App can be viewed [HERE]()
+
 ## Visual Demo
 
-><img src="" alt= "">
+>Signup page
+><img src="assets\images\signup-screen.JPG" alt= "Screenshot of signup screen">
 
-> App can be viewed [HERE]()
+>Dashboard view
+><img src="assets\images\dashboard-screen.JPG" alt="Screenshot of dashboard screen">
 
 ## Tests
 
-> The tests in this application verifies data formatting using Jest.
+> No tests were run on the app.
 
 ## Built With
 
