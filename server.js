@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: supersecretlion,
+  secret: process.env.DB_SESSION_SECRET,
   // Session will automatically expire in 10 minutes
   cookie: {expires: 10 * 60 * 1000},
   resave: false,
